@@ -1,162 +1,634 @@
-<!doctype html>
-<html lang="zh-Hant" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="數位多媒體學生的視覺設計、互動網頁與影像作品集。"
-    />
-    <title>林予安｜數位多媒體作品集</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">跳到主要內容</a>
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>譚婷婷 Ting-Ting Tan | 數位多媒體設計個人主頁</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            300: '#7cc8fc',
+                            400: '#38b0f8',
+                            500: '#0e94e6',
+                            600: '#0276c5',
+                            700: '#035ea2',
+                            800: '#075085',
+                            900: '#0c436e',
+                            950: '#082a48',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 客製化玻璃擬物樣式 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .glass-nav {
+            background: rgba(12, 67, 110, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* 美化滾動條 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #082a48;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38b0f8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7cc8fc;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-brand-950 via-brand-900 to-brand-700 min-h-screen text-gray-800 antialiased relative selection:bg-brand-400 selection:text-white">
 
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="回到首頁">
-        <span class="brand-mark">YA</span>
-        <span class="brand-copy">
-          <strong>LIN YU-AN</strong>
-          <small>Digital Media Student</small>
-        </span>
-      </a>
+    <!-- 動態背景流光背景球 -->
+    <div class="fixed top-[-10%] left-[-10%] w-[32rem] h-[32rem] bg-brand-500 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-pulse-slow pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-cyan-400 rounded-full mix-blend-screen filter blur-[120px] opacity-25 animate-float pointer-events-none"></div>
+    <div class="fixed top-[40%] right-[20%] w-[20rem] h-[20rem] bg-blue-600 rounded-full mix-blend-screen filter blur-[90px] opacity-20 pointer-events-none"></div>
 
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span>選單</span>
-      </button>
+    <!-- 頂部導覽列 Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-white/10 text-white transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 font-bold text-xl tracking-wider text-white hover:text-brand-300 transition">
+                <span class="w-9 h-9 rounded-lg bg-gradient-to-tr from-brand-400 to-brand-600 flex items-center justify-center text-white shadow-md">
+                    <i class="fa-solid fa-paintbrush"></i>
+                </span>
+                <span>譚婷婷 <span class="text-xs font-normal text-brand-300 block sm:inline">| Ting-Ting</span></span>
+            </a>
 
-      <nav id="site-nav" class="site-nav" aria-label="主要導覽">
-        <a href="#about">關於我</a>
-        <a href="#works">作品展示</a>
-        <a href="#contact">聯絡我</a>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">◐</span>
-          <span>切換主題</span>
-        </button>
-      </nav>
-    </header>
-
-    <main id="main-content">
-      <section id="top" class="hero section-shell" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">DIGITAL MEDIA · PORTFOLIO 2026</p>
-          <h1 id="hero-title">把想像，<span>做成可以互動的作品。</span></h1>
-          <p class="hero-lead">
-            我是林予安，正在學習用影像、介面與程式，把觀察到的生活轉換成有節奏、有溫度的數位體驗。
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#works">瀏覽作品 <span aria-hidden="true">↗</span></a>
-            <a class="button button-quiet" href="#about">認識我</a>
-          </div>
-          <div class="hero-meta" aria-label="個人專長摘要">
-            <div><strong>03</strong><span>作品類別</span></div>
-            <div><strong>08</strong><span>完成專案</span></div>
-            <div><strong>01</strong><span>創作方向</span></div>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-label="作品集視覺預覽">
-          <div class="visual-grid"></div>
-          <div class="visual-note note-top">Selected work<br /><strong>01 / 08</strong></div>
-          <div class="visual-card">
-            <div class="visual-card-top"><span>01</span><span>motion study</span></div>
-            <div class="visual-orbit"><span></span><span></span><span></span></div>
-            <p>光的<br /><em>練習</em></p>
-            <div class="visual-card-bottom"><span>VISUAL / 2026</span><span>↗</span></div>
-          </div>
-          <div class="visual-note note-bottom">Scroll to explore<br /><span>↓</span></div>
-        </div>
-      </section>
-
-      <section id="about" class="about section-shell" aria-labelledby="about-title">
-        <div class="section-heading">
-          <p class="eyebrow">01 / ABOUT</p>
-          <h2 id="about-title">先觀察，再創作。</h2>
-        </div>
-        <div class="about-grid">
-          <p class="about-statement">
-            我喜歡把複雜的訊息整理成清楚的畫面，也喜歡研究使用者如何在一個介面裡移動、停留與發現。
-          </p>
-          <div class="about-details">
-            <p>目前就讀數位多媒體相關科系，創作練習集中在品牌視覺、互動網頁與動態影像。</p>
-            <div class="skill-list" aria-label="技能列表">
-              <span>Visual Design</span><span>Web Design</span><span>Motion</span><span>Creative Coding</span>
+            <!-- 桌機選單 -->
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#about" class="hover:text-brand-300 transition hover:scale-105">關於我</a>
+                <a href="#skills" class="hover:text-brand-300 transition hover:scale-105">專業技能</a>
+                <a href="#gallery" class="hover:text-brand-300 transition hover:scale-105">生活與藝廊</a>
+                <a href="#contact" class="hover:text-brand-300 transition hover:scale-105">聯絡資訊</a>
+                <a href="#contact" class="bg-gradient-to-r from-brand-400 to-brand-600 text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:from-brand-500 hover:to-brand-700 transition transform hover:-translate-y-0.5">即刻連繫</a>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="works" class="works section-shell" aria-labelledby="works-title">
-        <div class="section-heading works-heading">
-          <div>
-            <p class="eyebrow">02 / SELECTED WORKS</p>
-            <h2 id="works-title">正在形成的作品集。</h2>
-          </div>
-          <p class="section-note">每一個作品，都是一次重新整理問題的方法。</p>
+            <!-- 行動端漢堡選單按鈕 -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-200 hover:text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
 
-        <div class="filter-bar" role="group" aria-label="作品分類">
-          <button class="filter-button is-active" type="button" data-filter="all">全部 <span>08</span></button>
-          <button class="filter-button" type="button" data-filter="visual">視覺設計 <span>03</span></button>
-          <button class="filter-button" type="button" data-filter="web">網頁互動 <span>03</span></button>
-          <button class="filter-button" type="button" data-filter="motion">動態影像 <span>02</span></button>
+        <!-- 行動端下拉選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-950/95 border-b border-white/10 px-6 py-4 space-y-3 font-medium">
+            <a href="#about" class="block text-gray-200 hover:text-brand-300 py-1" onclick="toggleMenu()">關於我</a>
+            <a href="#skills" class="block text-gray-200 hover:text-brand-300 py-1" onclick="toggleMenu()">專業技能</a>
+            <a href="#gallery" class="block text-gray-200 hover:text-brand-300 py-1" onclick="toggleMenu()">生活與藝廊</a>
+            <a href="#contact" class="block text-gray-200 hover:text-brand-300 py-1" onclick="toggleMenu()">聯絡資訊</a>
         </div>
+    </nav>
 
-        <div class="project-grid">
-          <article class="project-card project-featured" data-category="web">
-            <div class="project-art art-lumen"><span>LUMEN</span><i></i></div>
-            <div class="project-info"><p class="project-type">WEB INTERACTION · 2026</p><h3>Lumen 光影展覽網站</h3><p>以捲動敘事與互動卡片介紹校內光影展。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
-          <article class="project-card" data-category="visual">
-            <div class="project-art art-tide"><span>潮汐<br />TIDE</span><i></i></div>
-            <div class="project-info"><p class="project-type">VISUAL IDENTITY · 2026</p><h3>潮汐品牌識別</h3><p>從海岸線提取節奏，轉換成一組品牌視覺。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
-          <article class="project-card" data-category="motion">
-            <div class="project-art art-rhythm"><span>RHYTHM<br />OF AIR</span><i></i></div>
-            <div class="project-info"><p class="project-type">MOTION STUDY · 2025</p><h3>空氣的節奏</h3><p>用形狀、速度與聲音做一段動態練習。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
-          <article class="project-card" data-category="visual">
-            <div class="project-art art-letter"><span>A<br />Z</span><i></i></div>
-            <div class="project-info"><p class="project-type">EDITORIAL DESIGN · 2025</p><h3>字體採集誌</h3><p>記錄城市裡容易被忽略的字體風景。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
-          <article class="project-card" data-category="web">
-            <div class="project-art art-orbit"><span>ORBIT<br />LAB</span><i></i></div>
-            <div class="project-info"><p class="project-type">CREATIVE CODING · 2025</p><h3>Orbit 互動實驗室</h3><p>以滑鼠移動探索軌道、速度與色彩。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
-          <article class="project-card" data-category="motion">
-            <div class="project-art art-frame"><span>FRAME<br />BY FRAME</span><i></i></div>
-            <div class="project-info"><p class="project-type">SHORT FILM · 2025</p><h3>一格一格的日常</h3><p>將日常片段剪輯成一封給自己的影像信。</p><a href="#contact" class="text-link">查看專案 <span>↗</span></a></div>
-          </article>
+    <!-- 頁面主要內容容器 -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 space-y-16">
+
+        <!-- 英雄 Banner 區塊 (Hero Section) -->
+        <section id="hero" class="glass-card rounded-3xl p-6 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- 頭像相片展示 -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-400 via-cyan-400 to-brand-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                        <div class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                            <img src="image.png" alt="譚婷婷照片" class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';">
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        黎明科技大學 數位多媒體系
+                    </div>
+                </div>
+
+                <!-- 英雄文字與個人介紹 -->
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    <div class="inline-block bg-brand-100 text-brand-800 text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-md tracking-wider">
+                        ✨ DIGITAL MULTIMEDIA DESIGNER
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-950 tracking-tight leading-tight">
+                        嗨！我是 <span class="bg-gradient-to-r from-brand-600 to-cyan-600 bg-clip-text text-transparent">譚婷婷</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-700 font-medium leading-relaxed">
+                        「熱愛自由，獨立自主。」
+                    </p>
+                    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+                        專注於數位插畫、視覺設計與繪畫創作。善於透過圖畫與色彩記錄生活的點滴，發揮無限的視覺想像力。
+                    </p>
+
+                    <!-- 標籤與圖示 -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 pt-1">
+                        <span class="bg-white/80 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-paintbrush text-brand-500"></i> 手繪插畫
+                        </span>
+                        <span class="bg-white/80 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-laptop-code text-brand-500"></i> 數位繪圖
+                        </span>
+                        <span class="bg-white/80 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-camera text-brand-500"></i> 生活攝影
+                        </span>
+                        <span class="bg-white/80 border border-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-sm flex items-center gap-1.5">
+                            <i class="fa-solid fa-book-open text-brand-500"></i> 閱讀閱讀
+                        </span>
+                    </div>
+
+                    <!-- 快速按鈕區 -->
+                    <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-4">
+                        <a href="#gallery" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <i class="fa-solid fa-images"></i> 瀏覽相片與作品
+                        </a>
+                        <a href="#contact" class="bg-white hover:bg-gray-50 text-brand-800 font-medium px-6 py-3 rounded-xl border border-brand-200 shadow-sm hover:shadow transition flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane text-brand-600"></i> 聯絡方式
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 關於我 / 個人特質 區塊 (About Section) -->
+        <section id="about" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-900 tracking-wide flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-user-sparkles text-brand-500"></i> 關於我 & 個人特質
+                </h2>
+                <p class="text-sm text-gray-500">ABOUT ME & PERSONALITY</p>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 特質 1 -->
+                <div class="bg-white/90 p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-900 mb-2">獨立自主與自由</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        擁有極佳的獨立思考能力與個人步調，習慣自主探索設計風格，不受傳統框架約束，激發無限創作可能。
+                    </p>
+                </div>
+                <!-- 特質 2 -->
+                <div class="bg-white/90 p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-900 mb-2">數位多媒體熱忱</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        就讀於黎明科技大學數位多媒體系，對視覺美學、插畫創作與軟體應用保有極高熱忱與持續學習的心。
+                    </p>
+                </div>
+                <!-- 特質 3 -->
+                <div class="bg-white/90 p-6 rounded-2xl border border-brand-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-book-reader"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-900 mb-2">豐富生活愛好</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        喜歡閱讀以豐富內心世界，熱愛繪畫與攝影記錄細膩情感，並將生活中的體驗轉化為繪畫素材。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 專業技能區塊 (Skills Section) -->
+        <section id="skills" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-900 tracking-wide flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> 專業技能 & 繪圖軟體
+                </h2>
+                <p class="text-sm text-gray-500">MY SKILLS & SOFTWARE PROFICIENCY</p>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 核心技能 -->
+                <div class="bg-white/90 p-6 rounded-2xl border border-brand-100 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-brand-800 border-b border-gray-100 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-ruler text-brand-500"></i> 創作與繪畫技能
+                    </h3>
+
+                    <!-- 技能項 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-semibold text-sm text-gray-700">
+                            <span>手繪與電繪插畫 (Illustration)</span>
+                            <span class="text-brand-600">92%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-brand-400 to-brand-600 h-2.5 rounded-full w-[92%] transition-all duration-1000"></div>
+                        </div>
+                    </div>
+
+                    <!-- 技能項 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-semibold text-sm text-gray-700">
+                            <span>視覺與色彩構成 (Visual & Color Design)</span>
+                            <span class="text-brand-600">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-brand-400 to-brand-600 h-2.5 rounded-full w-[88%] transition-all duration-1000"></div>
+                        </div>
+                    </div>
+
+                    <!-- 技能項 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between font-semibold text-sm text-gray-700">
+                            <span>排版設計與多媒體素材處理</span>
+                            <span class="text-brand-600">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-brand-400 to-brand-600 h-2.5 rounded-full w-[85%] transition-all duration-1000"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 軟體工具 -->
+                <div class="bg-white/90 p-6 rounded-2xl border border-brand-100 shadow-sm space-y-6">
+                    <h3 class="text-xl font-bold text-brand-800 border-b border-gray-100 pb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-file text-brand-500"></i> 熟練繪圖與設計軟體
+                    </h3>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-brand-50/60 rounded-xl border border-brand-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-sm shadow">Ps</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">Photoshop</h4>
+                                <p class="text-xs text-gray-500">影像處理 / 電繪</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-brand-50/60 rounded-xl border border-brand-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-amber-600 text-white font-bold flex items-center justify-center text-sm shadow">Ai</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">Illustrator</h4>
+                                <p class="text-xs text-gray-500">向量插畫 / 標誌</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-brand-50/60 rounded-xl border border-brand-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow">CSP</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">Clip Studio Paint</h4>
+                                <p class="text-xs text-gray-500">電繪漫畫 / 插畫</p>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-brand-50/60 rounded-xl border border-brand-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-600 text-white font-bold flex items-center justify-center text-sm shadow">Pr</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">Premiere Pro</h4>
+                                <p class="text-xs text-gray-500">基礎影音剪輯</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <span class="text-xs font-semibold text-gray-500 block mb-2">其他涉獵軟體：</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-md">Procreate</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-md">Figma (基礎)</span>
+                            <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-md">Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生活照與作品藝廊區塊 (Photo & Works Gallery) -->
+        <section id="gallery" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-900 tracking-wide flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-camera-retro text-brand-500"></i> 生活藝廊與創作展示
+                </h2>
+                <p class="text-sm text-gray-500">LIFE MOMENTS & CREATIVE WORKS</p>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+                <p class="text-xs text-gray-600 pt-2">點擊相片可放大預覽，預留位置可自由替換您的生活照片與畫作！</p>
+            </div>
+
+            <!-- 篩選按鈕列 -->
+            <div class="flex justify-center gap-2 sm:gap-4 flex-wrap">
+                <button onclick="filterGallery('all')" class="filter-btn active-filter bg-brand-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow transition">全部展出</button>
+                <button onclick="filterGallery('life')" class="filter-btn bg-white/80 hover:bg-white text-gray-700 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition">生活點滴</button>
+                <button onclick="filterGallery('art')" class="filter-btn bg-white/80 hover:bg-white text-gray-700 px-5 py-2 rounded-full text-sm font-medium shadow-sm transition">繪畫作品</button>
+            </div>
+
+            <!-- 照片藝廊網格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 相片 1: 譚婷婷頭像生活照 (使用 image.png) -->
+                <div class="gallery-item life group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('image.png', '譚婷婷 - 個人生活照')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="image.png" alt="譚婷婷 - 生活照" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-brand-500 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">生活點滴</span>
+                                <h4 class="font-bold text-base">燦爛笑容 moment</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相片 2: 繪畫作品 佔位 1 -->
+                <div class="gallery-item art group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80', '數位插畫創作 - 色彩流動')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80" alt="插畫作品" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-purple-600 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">繪畫作品</span>
+                                <h4 class="font-bold text-base">水彩與數位色彩視覺創作</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相片 3: 生活寫照 佔位 2 -->
+                <div class="gallery-item life group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', '海邊時光 - 擁抱自然與自由')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="海邊生活照" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-brand-500 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">生活點滴</span>
+                                <h4 class="font-bold text-base">海邊散心與熱愛自由</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相片 4: 繪畫作品 佔位 3 -->
+                <div class="gallery-item art group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80', '數位抽象視覺藝術')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="繪畫創作" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-purple-600 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">繪畫作品</span>
+                                <h4 class="font-bold text-base">藍色系流體視覺構圖</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相片 5: 生活寫真 佔位 4 -->
+                <div class="gallery-item life group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80', '圖書與安靜的創作時光')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" alt="閱讀生活" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-brand-500 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">生活點滴</span>
+                                <h4 class="font-bold text-base">閱讀時光 - 靈感沉澱</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 相片 6: 繪畫與草稿作品 佔位 5 -->
+                <div class="gallery-item art group relative rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white" onclick="openLightbox('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80', '速寫草稿與畫筆')">
+                    <div class="aspect-w-4 aspect-h-3 h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="繪畫繪本" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <div class="text-white">
+                                <span class="bg-purple-600 text-xs px-2.5 py-0.5 rounded-md font-semibold mb-1 inline-block">繪畫作品</span>
+                                <h4 class="font-bold text-base">繪圖繪本隨筆紀錄</h4>
+                                <p class="text-xs text-gray-200">點擊放大檢視</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 聯絡方式區塊 (Contact Section) -->
+        <section id="contact" class="glass-card rounded-3xl p-6 sm:p-10 shadow-xl space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold text-brand-900 tracking-wide flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-paper-plane text-brand-500"></i> 與我聯絡
+                </h2>
+                <p class="text-sm text-gray-500">GET IN TOUCH WITH ME</p>
+                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- 聯絡資訊卡片 -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-white/90 p-5 rounded-2xl border border-brand-100 shadow-sm flex items-center gap-4 hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="text-xs font-semibold text-gray-500">電子信箱</h4>
+                            <a href="mailto:bd1151004@venus.lit.edu.tw" class="text-sm sm:text-base font-bold text-brand-900 hover:text-brand-600 truncate block">
+                                bd1151004@venus.lit.edu.tw
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/90 p-5 rounded-2xl border border-brand-100 shadow-sm flex items-center justify-between hover:shadow-md transition cursor-pointer" onclick="copyToClipboard('chayda1511', 'Line ID')">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl shrink-0">
+                                <i class="fa-brands fa-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-semibold text-gray-500">Line ID (點擊複製)</h4>
+                                <span class="text-base font-bold text-gray-800">chayda1511</span>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full border border-emerald-200">一鍵複製</span>
+                    </div>
+
+                    <a href="https://instagram.com/i15.nng" target="_blank" rel="noopener noreferrer" class="bg-white/90 p-5 rounded-2xl border border-brand-100 shadow-sm flex items-center gap-4 hover:shadow-md transition group">
+                        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-semibold text-gray-500">Instagram</h4>
+                            <span class="text-base font-bold text-gray-800 group-hover:text-pink-600 transition">@i15.nng</span>
+                        </div>
+                    </a>
+
+                    <div class="bg-brand-900 text-white p-5 rounded-2xl shadow-sm space-y-2">
+                        <h4 class="font-bold text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-graduation-cap text-brand-300"></i> 就讀院校
+                        </h4>
+                        <p class="text-xs text-brand-100 leading-relaxed">
+                            黎明科技大學 數位多媒體系<br>
+                            Li Ming University of Science and Technology
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 留言表單 (互動式展示) -->
+                <div class="lg:col-span-7 bg-white/90 p-6 sm:p-8 rounded-2xl border border-brand-100 shadow-sm">
+                    <h3 class="text-xl font-bold text-brand-900 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-comment-dots text-brand-500"></i> 傳送簡訊給婷婷
+                    </h3>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">您的姓名</label>
+                                <input type="text" required placeholder="請輸入姓名" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 text-sm transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-600 mb-1">您的 Email</label>
+                                <input type="email" required placeholder="example@email.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 text-sm transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">主旨</label>
+                            <input type="text" required placeholder="例如：繪畫合作詢問 / 聯絡" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 text-sm transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">訊息內容</label>
+                            <textarea rows="4" required placeholder="請寫下您想跟我說的話..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-200 text-sm transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold py-3 rounded-xl shadow-md transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> 送出訊息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 頁尾 Footer -->
+        <footer class="text-center text-white/80 space-y-4 pt-6 border-t border-white/10">
+            <div class="flex justify-center space-x-6 text-xl">
+                <a href="mailto:bd1151004@venus.lit.edu.tw" class="hover:text-brand-300 transition"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://instagram.com/i15.nng" target="_blank" class="hover:text-pink-400 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#contact" class="hover:text-emerald-400 transition"><i class="fa-brands fa-line"></i></a>
+            </div>
+            <p class="text-xs tracking-wider">
+                © <span id="year"></span> 譚婷婷 Ting-Ting Tan | 黎明科技大學 數位多媒體系 版權所有
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Lightbox 相片彈窗 -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-3xl hover:text-brand-300">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="預覽相片" class="max-h-[75vh] w-auto object-contain rounded-lg shadow-2xl border border-white/20">
+            <p id="lightbox-caption" class="text-white text-base mt-4 font-medium text-center bg-black/40 px-6 py-2 rounded-full border border-white/10"></p>
         </div>
-        <p id="empty-state" class="empty-state" hidden>這個分類目前還在累積中，換一個分類看看。</p>
-      </section>
+    </div>
 
-      <section id="contact" class="contact section-shell" aria-labelledby="contact-title">
-        <div class="contact-intro">
-          <p class="eyebrow">03 / CONTACT</p>
-          <h2 id="contact-title">一起做一個<br /><span>值得被看見的作品。</span></h2>
-          <p>如果你想聊聊設計、網站或下一個合作提案，歡迎留下訊息。</p>
-          <a class="contact-email" href="mailto:hello@yuan-portfolio.example">hello@yuan-portfolio.example <span>↗</span></a>
-        </div>
-        <form id="contact-form" class="contact-form">
-          <label for="name">你的名字</label>
-          <input id="name" name="name" type="text" placeholder="例如：王小明" required />
-          <label for="email">電子郵件</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          <label for="message">想聊聊什麼？</label>
-          <textarea id="message" name="message" rows="4" placeholder="簡單描述你的想法……" required></textarea>
-          <button class="button button-primary form-submit" type="submit">送出訊息 <span aria-hidden="true">↗</span></button>
-          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-    </main>
+    <!-- 複製成功提示框 Toast -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white px-6 py-3 rounded-full shadow-2xl opacity-0 transition-opacity duration-300 pointer-events-none z-50 flex items-center gap-3 border border-white/20 backdrop-blur-md">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">已複製</span>
+    </div>
 
-    <footer class="site-footer section-shell">
-      <span>© <span id="year"></span> Lin Yu-An</span>
-      <span>Built with curiosity &amp; code.</span>
-      <a href="#top">回到頂端 ↑</a>
-    </footer>
-  </body>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 導覽列行動選單切換
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
+
+        // 相片藝廊分類篩選
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'active-filter');
+                btn.classList.add('bg-white/80', 'text-gray-700');
+            });
+
+            event.target.classList.remove('bg-white/80', 'text-gray-700');
+            event.target.classList.add('bg-brand-600', 'text-white', 'active-filter');
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox 照片彈窗控制
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            img.src = src;
+            cap.textContent = caption;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // 複製到剪貼簿
+        function copyToClipboard(text, label) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            
+            showToast(`${label} 「${text}」已成功複製！`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 3000);
+        }
+
+        // 模擬表單提交
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('訊息已發送！感謝您的連繫。');
+            e.target.reset();
+        }
+    </script>
+</body>
 </html>
